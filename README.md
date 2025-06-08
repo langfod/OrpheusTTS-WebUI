@@ -6,7 +6,13 @@ This is a fork of the [Orpheus TTS](https://github.com/canopyai/Orpheus-TTS) pro
 
 https://github.com/user-attachments/assets/5e441285-b10f-4149-b691-df061c5ddcbb
 
-## ✅ Latest Updates (20/03/2025)
+## ✅ Latest Updates (08/06/2025)
+
+### REST API Integration
+- **FastAPI Endpoint**: New REST API for programmatic access to TTS functionality
+- **Interactive Documentation**: Swagger UI and ReDoc documentation available
+- **Full Parameter Control**: All TTS parameters accessible via API
+- **Python & Curl Examples**: Ready-to-use code samples for integration
 
 ### Long-Form Text Processing
 - **Tabbed Interface**: The UI now features a dedicated "Long Form Content" tab for processing larger text inputs
@@ -90,6 +96,68 @@ This is ideal for:
 - Scripts and dialogues
 - Books and stories
 - Any text content that exceeds a few paragraphs
+
+## REST API
+
+The project now includes a FastAPI-based REST API for programmatic access to the TTS functionality. The API provides the same features as the web interface but can be integrated into other applications.
+
+### Starting the API Server
+
+```bash
+# Make sure you're in the virtual environment
+source venv/bin/activate
+
+# Start the API server
+python api.py
+```
+
+The API will be available at:
+- API endpoint: http://localhost:8000/generate/
+- Interactive documentation: http://localhost:8000/docs
+- ReDoc documentation: http://localhost:8000/redoc
+
+### Using the API
+
+Example using curl:
+```bash
+curl -X POST "http://localhost:8000/generate/" \
+-H "Content-Type: application/json" \
+-d '{
+    "text": "Hello! This is a test of the long-form speech generation.",
+    "voice": "tara",
+    "temperature": 0.6,
+    "top_p": 0.8,
+    "repetition_penalty": 1.1,
+    "batch_size": 4,
+    "max_tokens": 4096
+}'
+```
+
+Example using Python:
+```python
+import requests
+
+response = requests.post(
+    "http://localhost:8000/generate/",
+    json={
+        "text": "Hello! This is a test of the long-form speech generation.",
+        "voice": "tara"
+    }
+)
+result = response.json()
+print(f"Audio file: {result['audio_file']}")
+print(f"Stats: {result['stats']}")
+```
+
+### API Parameters
+
+- `text` (required): The text to convert to speech
+- `voice` (default: "tara"): Voice to use ["tara", "jess", "leo", "leah", "dan", "mia", "zac", "zoe"]
+- `temperature` (default: 0.6): Controls variation in speech (0.1-2.0)
+- `top_p` (default: 0.8): Controls diversity of word choices (0.1-1.0)
+- `repetition_penalty` (default: 1.1): Prevents speech repetition (1.0-2.0)
+- `batch_size` (default: 4): Number of chunks to process in parallel (1-10)
+- `max_tokens` (default: 4096): Maximum tokens for generation (128-16384)
 
 ## Troubleshooting
 

@@ -1,1 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings
+
+# Model outputs and temporary files
+*.wav
+longform_*/
+output_*/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Hugging Face
+.huggingface/
+
+# Training outputs
+wandb/
+runs/
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+
+# System files
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific
+demo.mp4  # Demo video file
