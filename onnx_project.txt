@@ -1,0 +1,24 @@
+
+
+Original Model = "canopylabs/orpheus-tts-0.1-finetune-prod"
+
+
+Onnx Model: Prince-1/OrpheusTTS-ONNX
+
+( Onnx model created from Prince-1/orpheus_3b_0.1_ft_16bit using ="onnxruntime-genai/src/python/py/models/builder.py")
+Files:
+ genai_config.json
+ model.onnx
+ model.onnx.data
+ special_tokens_map.json
+ tokenizer.json
+ tokenizer_config.json
+
+High Level Tasks:
+
+ 1 - be able to load the ONNX Model
+ 2 - be able to to simple voice inference
+ 3 - be able to do zero-shot cloning - sample in orpheus_clone_sample.py
+ 3 - uvicorn base web api to take requests
+
+ CUDA is prefered and the end-goal but CPU can be used in early test steps.
